@@ -2,124 +2,70 @@
 
 namespace app\controllers;
 
-use Yii;
-use yii\filters\AccessControl;
+use yii;
 use yii\web\Controller;
-use yii\filters\VerbFilter;
-use app\models\LoginForm;
-use app\models\ContactForm;
+use app\models\User;
+
 
 class SiteController extends Controller
 {
-    /**
-     * @inheritdoc
-     */
-    public function behaviors()
+    private $query;
+    public function __construct()
     {
-        return [
-            'access' => [
-                'class' => AccessControl::className(),
-                'only' => ['logout'],
-                'rules' => [
-                    [
-                        'actions' => ['logout'],
-                        'allow' => true,
-                        'roles' => ['@'],
-                    ],
-                ],
-            ],
-            'verbs' => [
-                'class' => VerbFilter::className(),
-                'actions' => [
-                    'logout' => ['post'],
-                ],
-            ],
-        ];
+        $this->query = new yii\db\Query();
+
     }
 
-    /**
-     * @inheritdoc
-     */
-    public function actions()
-    {
-        return [
-            'error' => [
-                'class' => 'yii\web\ErrorAction',
-            ],
-            'captcha' => [
-                'class' => 'yii\captcha\CaptchaAction',
-                'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
-            ],
-        ];
-    }
 
-    /**
-     * Displays homepage.
-     *
-     * @return string
+    /*
+     * 首页
      */
     public function actionIndex()
     {
+        $res = User::find()->all();
+
         return $this->render('index');
     }
 
-    /**
-     * Login action.
-     *
-     * @return string
+    /*
+     * 登陆页
      */
     public function actionLogin()
     {
-        if (!Yii::$app->user->isGuest) {
-            return $this->goHome();
-        }
 
-        $model = new LoginForm();
-        if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            return $this->goBack();
-        }
-        return $this->render('login', [
-            'model' => $model,
-        ]);
+        return $this->render('login');
+    }
+    /*
+     * 登陆AJAX
+     */
+    public function actionDoLogin()
+    {
+
+
     }
 
-    /**
-     * Logout action.
-     *
-     * @return string
+    /*
+     * 注册页
      */
-    public function actionLogout()
+    public function actionReg()
     {
-        Yii::$app->user->logout();
 
-        return $this->goHome();
+        return $this->render('reg');
     }
 
-    /**
-     * Displays contact page.
-     *
-     * @return string
+    /*
+     * 注册入库
      */
-    public function actionContact()
+    public function actionDoReg()
     {
-        $model = new ContactForm();
-        if ($model->load(Yii::$app->request->post()) && $model->contact(Yii::$app->params['adminEmail'])) {
-            Yii::$app->session->setFlash('contactFormSubmitted');
 
-            return $this->refresh();
-        }
-        return $this->render('contact', [
-            'model' => $model,
-        ]);
     }
 
-    /**
-     * Displays about page.
-     *
-     * @return string
-     */
-    public function actionAbout()
+    public function actionTest()
     {
-        return $this->render('about');
+        $res = User::find()->all();
+        $redis = Yii::$app->redis;
+
+        return $this->render('test');
     }
 }
