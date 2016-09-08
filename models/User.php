@@ -14,7 +14,7 @@ class User extends ActiveRecord
 {
     private $query;
     private $table = "user";
-    public function __construct()
+    public function init()
     {
         $this->query = new yii\db\Query();
     }
@@ -36,10 +36,15 @@ class User extends ActiveRecord
     /*
      * 插入新用户
      */
-    public function addUser($data)
+     public function addUserOnce($data)
     {
-        $user = new User();
-
-
+        foreach($data as $key => $value){
+            $this->$key = $value;
+        }
+        $res = $this->save();
+        if($res){
+            return $this->attributes['id'];
+        }
+        return $res;
     }
 }

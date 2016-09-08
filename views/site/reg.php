@@ -118,8 +118,11 @@ $this->title = 'Login';
             curPassword();
             if(flag){
                 var data = {"username":$('#username').val(),"password":$('#password').val()};
-                var url = '<?php echo Url::to(['site/doReg']); ?>';
-                $.post();
+                var url = '<?php echo Url::to(['site/doreg']); ?>';
+                $.post(url,data,function(d){
+                    console.log(d);
+                    alert(d);
+                });
             }else{
                 return false;
             }
