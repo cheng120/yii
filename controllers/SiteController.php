@@ -54,7 +54,13 @@ class SiteController extends Controller
      */
     public function actionDoReg()
     {
-        $username = '';
+
+        $username = $_POST['username'];
+        $password = md5(trim($_POST['password']));
+        $user = new User();
+        $data['username'] = $username;
+        $data['password'] = $password;
+
     }
 
     public function actionTest()
