@@ -14,7 +14,7 @@ class User extends ActiveRecord
 {
     private $query;
     private $table = "user";
-    
+
     public function init()
     {
         $this->query = new yii\db\Query();
