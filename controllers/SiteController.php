@@ -18,7 +18,6 @@ class SiteController extends Controller
     {
         $res = User::find()->all();
         $redis = Yii::$app->redis;
-        $redis->setget('k1','v1');
         echo $redis->get('k1');
         return $this->render('index');
     }
