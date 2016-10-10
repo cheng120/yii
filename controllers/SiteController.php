@@ -56,6 +56,7 @@ class SiteController extends Controller
                 $redis = Yii::$app->redis;
                 $redis -> set(md5($res['id'].$res['password'].time()),"isLogin");
                 $this->session->set("id",$res['id']);
+                $user->reFreshLoginTime($res['id']);
                 echo json_encode(array("msg"=>"登陆成功","code"=>10000));
                 exit;
             }else{
