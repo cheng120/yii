@@ -52,4 +52,20 @@ class User extends ActiveRecord
          }
          return $res;
      }
+
+    /*
+     * 登陆刷新登录时间
+     */
+    public function reFreshLoginTime($userid)
+    {
+
+        $user = User::findOne($userid);
+        $user->lastlogintime = time();
+        $res = $this->save();
+        if($res){
+            return $this->attributes['id'];
+        }
+        return $res;
+
+    }
 }
