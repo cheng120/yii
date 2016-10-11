@@ -32,6 +32,7 @@ class User extends ActiveRecord
             ->where($where)
             ->limit(1)
             ->one();
+        return $res;
     }
 
     /*

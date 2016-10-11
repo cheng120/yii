@@ -49,7 +49,7 @@
         var username = $('#username').val();
         var password = $('#password').val();
         var remenber = $('#rem').val();
-        var loginUrl = '<?php echo Url::to(['site/doLogin']); ?>';
+        var loginUrl = '<?php echo Url::to(['site/dologin']); ?>';
         if(username == ''){
             alert('请输入用户名');
             return false;
@@ -64,7 +64,13 @@
         }
         var data = {"username":username,"password":password,"remenber":remenber};
         $.post(loginUrl,data,function(cb){
-            alert(cb);
+            cb = eval("("+cb+")");
+            if(cb.code = 10000){
+                alert("登陆成功");
+                location.href = '<?php echo Url::to(['ati/index']); ?>';
+            }else{
+                alert(cb.msg)
+            }
         })
     }
 

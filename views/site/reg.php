@@ -127,7 +127,13 @@ $this->title = 'Login';
                 var url = '<?php echo Url::to(['site/doreg']); ?>';
                 $.post(url, data, function (d) {
                     console.log(d);
-                    alert(d);
+                    d = eval("("+d+")");
+                    if(d.code == 10000){
+                        alert(d.msg);
+                        location.href = "<?php echo Url::to(['site/login']); ?>";
+                    }else{
+                        alert(d.msg);
+                    }
                 });
             } else {
                 return false;

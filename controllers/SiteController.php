@@ -34,13 +34,13 @@ class SiteController extends Controller
     public function actionLogin()
     {
         $redis = Yii::$app->redis;
-        $loginStatus = $redis->get();
+        $this->session->get("id");
         return $this->render('login');
     }
     /*
      * 登陆AJAX
      */
-    public function actionDoLogin()
+    public function actionDologin()
     {
         $username = $_POST['username'];
         $password = $_POST['password'];
@@ -48,10 +48,9 @@ class SiteController extends Controller
         if(trim($username) && trim($password)){
             $where = array(
                 "username"=>$username,
-                "password"=>$password,
+                "password"=>md5($password),
             );
             $res = $user->getOneUserInfo($where);
-
             if($res){
                 $redis = Yii::$app->redis;
                 $redis -> set(md5($res['id'].$res['password'].time()),"isLogin");
@@ -64,7 +63,7 @@ class SiteController extends Controller
                 exit;
             }
         }else{
-            echo json_encode(array("msg"=>"请输入用户名和密码","code"=>10001));
+            echo json_encode(array("msg"=>"请输入用户名和密码","code"=>10002));
             exit;
         }
     }
