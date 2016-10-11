@@ -33,8 +33,17 @@ class SiteController extends Controller
      */
     public function actionLogin()
     {
-        $redis = Yii::$app->redis;
-        $this->session->get("id");
+        $user = new User();
+        $username = $this->session->get("username");
+        if($username){
+            $where = array("username"=>$username);
+            $res = $user->getOneUserInfo($where);
+            if($res){
+                $this->redirect('ati/index');
+            }else{
+                $this->session->set("username","");
+            }
+        }
         return $this->render('login');
     }
     /*
@@ -51,10 +60,11 @@ class SiteController extends Controller
                 "password"=>md5($password),
             );
             $res = $user->getOneUserInfo($where);
+
             if($res){
                 $redis = Yii::$app->redis;
-                $redis -> set(md5($res['id'].$res['password'].time()),"isLogin");
-                $this->session->set("id",$res['id']);
+                $redis -> set(md5($res['id'].md5($password)),json_encode($res));
+                $this->session->set("username",$res['username']);
                 $user->reFreshLoginTime($res['id']);
                 echo json_encode(array("msg"=>"登陆成功","code"=>10000));
                 exit;

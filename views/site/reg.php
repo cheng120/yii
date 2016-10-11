@@ -7,7 +7,7 @@
  */
 use yii\helpers\Url;
 
-$this->title = 'Login';
+$this->title = 'ati';
 ?>
 <div class="container text-center ">
 

@@ -13,11 +13,13 @@ use yii\db\ActiveRecord;
 class User extends ActiveRecord
 {
     private $query;
+    private $command;
     private $table = "user";
 
     public function init()
     {
         $this->query = new yii\db\Query();
+        $this->command = Yii::$app->db->createCommand();
     }
 
     /*
@@ -59,10 +61,7 @@ class User extends ActiveRecord
      */
     public function reFreshLoginTime($userid)
     {
-
-        $user = User::findOne($userid);
-        $user->lastlogintime = time();
-        $res = $this->save();
+        $res = $this->command->update($this->table,array("lastlogintime"=>time()),"id=".$userid)->execute();
         if($res){
             return $this->attributes['id'];
         }

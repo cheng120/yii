@@ -7,6 +7,9 @@
  */
 
 namespace app\controllers;
+use yii;
+use yii\web\Controller;
+use app\models\User;
 
 
 class AtiController extends Controller
