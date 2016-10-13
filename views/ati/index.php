@@ -3,9 +3,28 @@
     $this->title = 'ati';
 ?>
 
-<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-    Launch demo modal
-</button>
+<div class="row">
+    <div class="col-md-6" style="border-color: #87CEFF;border-style: solid;">
+
+        <div>
+            内容
+        </div>
+        <div class="text-right">
+            来源
+        </div>
+        <div>
+            操作
+        </div>
+    </div>
+</div>
+<div class="row">
+    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+        Launch demo modal
+    </button>
+</div>
+
+
+
 
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">

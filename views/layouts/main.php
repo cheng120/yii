@@ -11,6 +11,7 @@ use app\assets\AppAsset;
 
 
 AppAsset::register($this);
+Yii::$app->session->open();
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -35,19 +36,21 @@ AppAsset::register($this);
             'class' => 'navbar-inverse navbar-fixed-top',
         ],
     ]);
+    $username = Yii::$app->session->get('username');
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
             ['label' => '主页', 'url' => ["site/index"]],
+            ['label' => '个人设置', 'url' => ["userini/index"]],
            // ['label' => 'Test', 'url' => ['site/test']],
            // ['label' => 'Contact', 'url' => ['site/contact']],
-            Yii::$app->user->isGuest ? (
+            !$username ? (
                 ['label' => '登陆', 'url' => ['site/login']]
             ) : (
                 '<li>'
                 . Html::beginForm(['/site/logout'], 'post', ['class' => 'navbar-form'])
                 . Html::submitButton(
-                    'Logout (' . Yii::$app->user->identity->username . ')',
+                    '登出 (' .$username. ')',
                     ['class' => 'btn btn-link']
                 )
                 . Html::endForm()
@@ -70,7 +73,7 @@ AppAsset::register($this);
     <div class="container">
         <p class="pull-left">&copy; My Company <?= date('Y') ?></p>
 
-        <p class="pull-right"><?= Yii::powered() ?></p>
+        <p class="pull-right"><a href="#">点了没用的东西</a></p>
     </div>
 </footer>
 
