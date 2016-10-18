@@ -25,13 +25,15 @@ class BaseController extends Controller
         $this->redis = Yii::$app->redis;
         $user = new User();
         $username = Yii::$app->session->get("username");
+
         if($username){
             $info = $this->redis->get($username);
             if($info){
-                $this->userInfo = $info;
+                $this->userInfo = json_decode($info,true);
             }else{
                 $where = array("username"=>$username);
                 $this->userInfo = $user->getOneUserInfo($where);
+                $this->session->set($this->userInfo['username'],$this->userInfo);
             }
         }else{
             $this->userInfo=array();
@@ -61,5 +63,14 @@ class BaseController extends Controller
         curl_close($ch);
         //打印获得的数据
         return $output;
+    }
+
+    public function updateUserInfo($userid)
+    {
+        $user = new User();
+        $where = array('id'=>$userid);
+        $this->userInfo = $user->getOneUserInfo($where);
+        $this->session->set($this->userInfo['username'],'');
+        $this->session->set($this->userInfo['username'],json_encode($this->userInfo));
     }
 }

@@ -15,11 +15,12 @@ class User extends ActiveRecord
     private $query;
     private $command;
     private $table = "user";
-
+    private $redis;
     public function init()
     {
         $this->query = new yii\db\Query();
         $this->command = Yii::$app->db->createCommand();
+        $this->redis = Yii::$app->redis;
     }
 
     /*
@@ -68,4 +69,19 @@ class User extends ActiveRecord
         return $res;
 
     }
+
+    /*
+     * 修改用户信息
+     */
+    public function editUserInfo($userid,$data)
+    {
+
+        $user = User::findOne($userid);
+        foreach($data as $key => $value){
+            $user->$key = $value;
+        }
+        $res = $user->update();
+        return $res;
+    }
+
 }

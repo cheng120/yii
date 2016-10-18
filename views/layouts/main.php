@@ -41,7 +41,7 @@ Yii::$app->session->open();
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
             ['label' => '主页', 'url' => ["site/index"]],
-            ['label' => '个人设置', 'url' => ["userini/index"]],
+            !$username?"":['label' => '个人设置', 'url' => ["userini/index"]],
            // ['label' => 'Test', 'url' => ['site/test']],
            // ['label' => 'Contact', 'url' => ['site/contact']],
             !$username ? (
