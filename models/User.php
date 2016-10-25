@@ -44,9 +44,6 @@ class User extends ActiveRecord
 
      public function addUserOnce($data)
      {
-         $user = new User();
-
-
          foreach($data as $key => $value){
              $this->$key = $value;
          }

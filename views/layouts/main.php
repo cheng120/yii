@@ -42,6 +42,7 @@ Yii::$app->session->open();
         'items' => [
             ['label' => '主页', 'url' => ["site/index"]],
             !$username?"":['label' => '个人设置', 'url' => ["userini/index"]],
+            !$username?"":['label' => '语录', 'url' => ["ati/index"]],
            // ['label' => 'Test', 'url' => ['site/test']],
            // ['label' => 'Contact', 'url' => ['site/contact']],
             !$username ? (
