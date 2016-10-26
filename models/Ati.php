@@ -27,10 +27,11 @@ class Ati  extends ActiveRecord
     /*
      * 添加文章
      */
-    public function addAti($userid,$content)
-    {
+    public function addAti($userid,$content,$source)
+    {-
         $this->userid = $userid;
         $this->content = $content;
+        $this->source = $source;
         $this->createtime = time();
         $res = $this->save();
 

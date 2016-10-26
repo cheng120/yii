@@ -34,6 +34,7 @@ class AtiController extends BaseController
         $countQuery = clone $query;
         $pages = new Pagination(['totalCount' => $countQuery->count(),'pageSize'   => 4,]);
         $models = $query->offset($pages->offset)
+            ->orderBy("createtime desc")
             ->limit($pages->limit)
             ->all();
         return $this->render('index', [
@@ -45,8 +46,9 @@ class AtiController extends BaseController
     public function actionAddati()
     {
         $content = $_POST['content'];
+        $source = $_POST['sourcer'];
         $ati = new Ati();
-        $res = $ati->addAti($this->userInfo['id'],$content);
+        $res = $ati->addAti($this->userInfo['id'],$content,$source);
         if($res){
             $list = $ati->getAtiList();
             return json_encode(array("msg"=>"成功","code"=>"10000","data"=>$list));

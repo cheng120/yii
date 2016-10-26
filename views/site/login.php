@@ -35,6 +35,7 @@
         <!--login end-->
     </div>
 </div>
+<script type="text/javascript" src="http://qzonestyle.gtimg.cn/qzone/openapi/qc_loader.js" data-appid="APPID" data-redirecturi="REDIRECTURI" charset="utf-8"></script>
 <script>
     $(function(){
         $('#reg').on('click',function(){
