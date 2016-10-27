@@ -72,7 +72,7 @@ Yii::$app->session->open();
 
 <footer class="footer">
     <div class="container">
-        <p class="pull-left">&copy; My Company <?= date('Y') ?></p>
+        <p class="pull-left">&copy;  京ICP备16030806号-1 <?= date('Y') ?></p>
 
         <p class="pull-right"><a href="#">点了没用的东西</a></p>
     </div>
