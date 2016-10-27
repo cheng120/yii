@@ -9,7 +9,7 @@
 namespace app\controllers;
 use app\models\Ati;
 use yii;
-use yii\web\Controller;
+use yii\helpers\Url;
 use app\models\User;
 use yii\data\Pagination;
 
