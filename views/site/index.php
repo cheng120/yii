@@ -20,7 +20,7 @@
                     ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
                     fugiat nulla pariatur.</p>
 
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/doc/">Yii Documentation &raquo;</a></p>
+                <p><a class="btn btn-default" href="javascript:;" onclick="alert('逗比才点')">有趣</a></p>
             </div>
             <div class="col-lg-4">
                 <h2>Heading</h2>
@@ -30,7 +30,7 @@
                     ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
                     fugiat nulla pariatur.</p>
 
-                <p><a class="btn btn-default" href="yii.lcazj.com">qi shi shen me dou bu shi &raquo;</a></p>
+                <p><a class="btn btn-default" href="javascript:;" onclick="alert('逗比才点')">qi shi shen me dou bu shi &raquo;</a></p>
             </div>
             <div class="col-lg-4">
                 <h2>Heading</h2>
@@ -40,7 +40,7 @@
                     ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
                     fugiat nulla pariatur.</p>
 
-                <p><a class="btn btn-default" href="http://yii.lcazj.com/">you qu &raquo;</a></p>
+                <p><a class="btn btn-default" href="javascript:;" onclick="alert('有趣')">you qu &raquo;</a></p>
             </div>
         </div>
 
