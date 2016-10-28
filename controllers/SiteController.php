@@ -118,6 +118,14 @@ class SiteController extends BaseController
         $this->redirect('index');
     }
 
+    /*
+     * QQ回调信息
+     */
+    public function actionQQRedirect()
+    {
+        echo "success";
+    }
+
     public function actionTest()
     {
         $res = User::find()->all();

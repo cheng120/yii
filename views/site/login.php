@@ -2,6 +2,7 @@
     use yii\helpers\Url;
     $this->title = 'Login';
 ?>
+<script type="text/javascript" src="http://qzonestyle.gtimg.cn/qzone/openapi/qc_loader.js" data-appid="1105786610" data-redirecturi="http://yii.lcazj.com/site/QQRedirect" charset="utf-8"></script>
 <div class="container text-center " >
 
     <div class="col-md-4 col-sm-offset-4">
@@ -24,6 +25,10 @@
             <p class="help-block">Example block-level help text here.</p>
         </div>
         -->
+        <div>
+            其他登陆方式:<span id="qqLoginBtn"></span>
+        </div>
+
         <div class="checkbox">
             <label>
                 <input type="checkbox" id="rem"> 记住我
@@ -35,7 +40,6 @@
         <!--login end-->
     </div>
 </div>
-<script type="text/javascript" src="http://qzonestyle.gtimg.cn/qzone/openapi/qc_loader.js" data-appid="APPID" data-redirecturi="REDIRECTURI" charset="utf-8"></script>
 <script>
     $(function(){
         $('#reg').on('click',function(){
@@ -74,5 +78,9 @@
             }
         })
     }
-
+    <script type="text/javascript">
+        QC.Login({
+            btnId:"qqLoginBtn"	//插入按钮的节点id
+        });
+</script>
 </script>
