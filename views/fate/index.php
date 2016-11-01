@@ -5,19 +5,46 @@ use yii\widgets\LinkPager;
 
 $this->title = 'fate';
 ?>
+<div id="myCarousel" class="carousel slide">
+    <!-- 轮播（Carousel）指标 -->
+    <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0"
+            class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+    </ol>
+    <!-- 轮播（Carousel）项目 -->
+    <div class="carousel-inner">
+        <div class="item active">
+            <img src="/img/0.jpg" alt="First slide" value="1">
+        </div>
+        <div class="item">
+            <img src="/img/1.jpg" alt="Second slide" value="2">
+        </div>
+        <div class="item">
+            <img src="/img/2.jpg" alt="Third slide" value="3">
+        </div>
+    </div>
+    <!-- 轮播（Carousel）导航 -->
+    <a class="carousel-control left" href="#myCarousel"
+       data-slide="prev">&lsaquo;</a>
+    <a class="carousel-control right" href="#myCarousel"
+       data-slide="next">&rsaquo;</a>
+    <!-- 控制按钮 -->
 
-<ul class="nav nav-tabs" role="tablist" id="myTab">
-    <li role="presentation" class="active"><a href="#home" role="tab" data-toggle="tab"><img src="" alt=""></a></li>
-    <li role="presentation"><a href="#profile" role="tab" data-toggle="tab">Profile</a></li>
-    <li role="presentation"><a href="#messages" role="tab" data-toggle="tab">Messages</a></li>
-    <li role="presentation"><a href="#settings" role="tab" data-toggle="tab">Settings</a></li>
-</ul>
+</div>
+<div style="text-align:center;">
 
-<div class="tab-content">
-    <div role="tabpanel" class="tab-pane active" id="home">...</div>
-    <div role="tabpanel" class="tab-pane" id="profile">...</div>
-    <div role="tabpanel" class="tab-pane" id="messages">...</div>
-    <div role="tabpanel" class="tab-pane" id="settings">...</div>
+    <button class="btn slide-one" value="1" ><img src="/img/0.jpg" alt="" style="width: 100px;height: 75px" class="img-thumbnail"></button>
+    <button class="btn slide-two" value="2" ><img src="/img/1.jpg" alt="" style="width: 100px;height: 75px" class="img-thumbnail"></button>
+    <button class="btn slide-three" value="3" ><img src="/img/2.jpg" alt="" style="width: 100px;height: 75px" class="img-thumbnail"></button>
+</div>
+<div id="bewrite">
+    <div id="content1" style="display: none">
+        1
+    </div>
+    <div id="content2" style="display: none">2</div>
+    <div id="content3" style="display: none">3</div>
 </div>
 
 <script>
@@ -43,3 +70,39 @@ $this->title = 'fate';
         </div>
     </div>
 </div>
+<script>
+    $(function(){
+        $('.carousel').carousel({
+            interval: false,
+        })
+
+// 初始化轮播
+        /*$(".start-slide").click(function(){
+         $("#myCarousel").carousel('cycle');
+         });*/
+// 停止轮播
+        $("#myCarousel").carousel('pause');
+// 循环轮播到上一个项目
+        $(".prev-slide").click(function(){
+            $("#myCarousel").carousel('prev');
+        });
+// 循环轮播到下一个项目
+        $(".next-slide").click(function(){
+            $("#myCarousel").carousel('next');
+        });
+// 循环轮播到某个特定的帧
+        $(".slide-one").click(function(){
+            $("#myCarousel").carousel(0);
+            $("#content"+1).show();
+        });
+        $(".slide-two").click(function(){
+            $("#myCarousel").carousel(1);
+        });
+        $(".slide-three").click(function(){
+            $("#myCarousel").carousel(2);
+        });
+        $("#myCarousel").on('slide.bs.carousel',function(){
+
+        });
+    });
+</script>
