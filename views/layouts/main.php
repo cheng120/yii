@@ -75,7 +75,7 @@ Yii::$app->session->open();
     <div class="container">
         <p class="pull-left">&copy;  京ICP备16030806号-1 <?= date('Y') ?></p>
 
-        <p class="pull-right"><a href="#"><img src="/img/upyun_logo.png" alt=""></a></p>
+        <p class="pull-right"><a href="https://www.upyun.com"><img src="/img/upyun_logo.png" alt=""></a></p>
     </div>
 </footer>
 
