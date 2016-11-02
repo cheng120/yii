@@ -5,6 +5,7 @@ use yii\widgets\LinkPager;
 
 $this->title = 'fate';
 ?>
+
 <div id="myCarousel" class="carousel slide">
     <!-- 轮播（Carousel）指标 -->
     <ol class="carousel-indicators">
@@ -42,13 +43,13 @@ $this->title = 'fate';
 
 </div>
 <div style="text-align:center;">
-
-    <button class="btn slide" value="1" ><img src="/img/0.jpg" alt="" style="width: 100px;height: 75px" class="img-thumbnail"></button>
-    <button class="btn slide" value="2" ><img src="/img/1.jpg" alt="" style="width: 100px;height: 75px" class="img-thumbnail"></button>
-    <button class="btn slide" value="3" ><img src="/img/2.jpg" alt="" style="width: 100px;height: 75px" class="img-thumbnail"></button>
-    <button class="btn slide" value="4" ><img src="/img/3.jpg" alt="" style="width: 100px;height: 75px" class="img-thumbnail"></button>
-    <button class="btn slide" value="5" ><img src="/img/4.jpg" alt="" style="width: 100px;height: 75px" class="img-thumbnail"></button>
-
+    <button class="btn" id="boxprev"><img src="/img/prevlogo.png" style="width: 100px;height: 75px" alt=""></button>
+    <button class="btn slided" value="1" ><img src="/img/0.jpg" alt="" style="width: 100px;height: 75px" class="img-thumbnail"></button>
+    <button class="btn slided" value="2" ><img src="/img/1.jpg" alt="" style="width: 100px;height: 75px" class="img-thumbnail"></button>
+    <button class="btn slided" value="3" ><img src="/img/2.jpg" alt="" style="width: 100px;height: 75px" class="img-thumbnail"></button>
+    <button class="btn slided hiddened" value="4" style="display: none;"><img src="/img/3.jpg" alt="" style="width: 100px;height: 75px" class="img-thumbnail"></button>
+    <button class="btn slided hiddened" value="5" style="display: none;"><img src="/img/4.jpg" alt="" style="width: 100px;height: 75px" class="img-thumbnail"></button>
+    <button class="btn" id="boxnext"><img src="/img/nextlogo.png" style="width: 100px;height: 75px" alt=""></button>
 
 </div>
 <div id="bewrite">
@@ -59,11 +60,6 @@ $this->title = 'fate';
     <div id="content3" class="contents" style="display: none">3</div>
 </div>
 
-<script>
-    $(function () {
-        $('#myTab a:last').tab('show')
-    })
-</script>
 
 <div class="modal fade" id="remind" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -82,6 +78,7 @@ $this->title = 'fate';
         </div>
     </div>
 </div>
+
 <script>
     $(function(){
         $('.carousel').carousel({
@@ -102,10 +99,34 @@ $this->title = 'fate';
             $("#myCarousel").carousel('next');
         });
 // 循环轮播到某个特定的帧
-        $(".slide").click(function(){
+        $(".slided").click(function(){
             $("#myCarousel").carousel($(this).val()-1);
             $(".contents").hide();
             $("#content"+$(this).val()).show();
         });
+        $("#boxprev").on('click',function(){
+            if($(".slided:visible:first").index() == 1){
+                alert("已经是第一张了");
+                return  false;
+            }else{
+                var prevPage = $(".slided:visible:first").index();
+                var nextPage = $(".slided:visible:last").index();
+                $(".slided").eq(prevPage-2).show(500);
+                $(".slided").eq(nextPage-1).hide(500);
+
+            }
+        })
+        $("#boxnext").on('click',function(){
+            if($(".slided:visible:last").index() == 5){
+                alert("已经是最后一张了");
+                return  false;
+            }else{
+                var prevPage = $(".slided:visible:first").index()-1;
+                var nextPage = $(".slided:visible:last").index();
+                $(".slided").eq(nextPage).show(500);
+                $(".slided").eq(prevPage).hide(500);
+            }
+        })
     });
+
 </script>
