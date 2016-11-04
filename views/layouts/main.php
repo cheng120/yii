@@ -41,13 +41,13 @@ Yii::$app->session->open();
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
             ['label' => '主页', 'url' => ["site/index"]],
-            ['label' => 'fate',  'url'=>'fate/index'],
+            ['label' => 'fate',  'url'=>['fate/index']],
             !$username?"":['label' => '个人设置', 'url' => ["userini/index"]],
             !$username?"":['label' => '语录', 'url' => ["ati/index"]],
-           // ['label' => 'Test', 'url' => ['site/test']],
-           // ['label' => 'Contact', 'url' => ['site/contact']],
+            // ['label' => 'Test', 'url' => ['site/test']],
+            // ['label' => 'Contact', 'url' => ['site/contact']],
             !$username ? (
-                ['label' => '登陆', 'url' => ['site/login']]
+            ['label' => '登陆', 'url' => ['site/login']]
             ) : (
                 '<li>'
                 . Html::beginForm(['/site/logout'], 'post', ['class' => 'navbar-form'])

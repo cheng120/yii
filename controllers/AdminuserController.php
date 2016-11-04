@@ -9,10 +9,20 @@
 namespace app\controllers;
 
 
-class AdminuserController extends BaseController
+class AdminuserController extends BackController
 {
+
+    /*
+     * 后台登陆
+     */
+    public function actionLogin()
+    {
+        return $this->render("login");
+    }
+
     public function actionIndex()
     {
+
         return $this->render("index");
     }
 }
