@@ -44,6 +44,8 @@ class BackController extends Controller
 
     }
 
+
+
     public function updateUserInfo($userid)
     {
         $user = new User();
