@@ -52,7 +52,7 @@
                     $form = ActiveForm::begin(['id'=>"login-form"]);
                 ?>
                 <?= Html::csrfMetaTags() ?>
-                <?php echo Captcha::widget(['name'=>'captchaimg','captchaAction'=>'captcha','imageOptions'=>['id'=>'captchaimg', 'title'=>'换一个', 'alt'=>'换一个', 'style'=>'cursor:pointer;margin-top:10px; height: 62px;wight: 275px;'],'template'=>'{image}']); ?>
+                <?php echo Captcha::widget(['name'=>'captchaimg','captchaAction'=>'/adminlogin/captcha','imageOptions'=>['id'=>'captchaimg', 'title'=>'换一个', 'alt'=>'换一个', 'style'=>'cursor:pointer;margin-top:10px; height: 62px;wight: 275px;'],'template'=>'{image}']); ?>
                 <input type="text" name="vcode" class="form-control" placeholder="输入验证码">
             </div>
 
@@ -84,6 +84,13 @@
             increaseArea: '20%' // optional
         });
     });
+
+<?php $url = Url::to(['adminlogin/captcha','refresh'=>'1']);?>
+    $("#captchaimg").click(function(){
+        $.get('<?php echo $url; ?>',function(res){
+            $("#captchaimg").attr('src',res.url);
+        })
+    })
 </script>
 </body>
 </html>

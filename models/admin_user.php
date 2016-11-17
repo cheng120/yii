@@ -10,6 +10,7 @@ namespace app\models;
 
 
 use yii\db\ActiveRecord;
+use yii;
 use yii\rest\ActiveController;
 
 class Admin_user extends ActiveRecord
