@@ -15,14 +15,32 @@ class AdminuserController extends BackController
     /*
      * 后台登陆
      */
-    public function actionLogin()
-    {
-        return $this->render("login");
-    }
 
     public function actionIndex()
     {
 
         return $this->render("index");
+    }
+
+    /*
+     * 所有账号
+     */
+    public function actionUserlist()
+    {
+
+        return $this->render("userlist");
+    }
+
+    /*
+     * 上传图片
+     */
+    public function actionFateup()
+    {
+        $url = "v2.api.upyun.com";
+        $bucket = "lcazj";
+        $operator = "cheng125";
+        $password = md5("8888888a");
+        $expiration = 1478674618;
+        return $this->render("fateup");
     }
 }

@@ -42,7 +42,8 @@ class AdminloginController extends BackController
     public function actionLoginadmin()
     {
 
-        var_dump($_SESSION);
+
+
         return $this->render("login");
     }
 
@@ -60,10 +61,7 @@ class AdminloginController extends BackController
         }
         $str = "__captcha/adminlogin/captcha";
          //$captchCode为用户输入的验证码
-        var_dump($_SESSION[$str]);
-        var_dump($captchCode);
-        exit;
-        if($res){
+        if($_SESSION[$str] != $captchCode){
             $str = "<script>alert('验证码错误');location.href='/adminlogin/loginadmin';</script>";
             echo $str;
             exit;
@@ -81,7 +79,7 @@ class AdminloginController extends BackController
         );
         $userRes = $admin_user->verAdminUser($data);
         if($userRes){
-            $str = "<script>alert('登陆成功');location.href='/adminlogin/index';</script>";
+            $str = "<script>alert('登陆成功');location.href='/adminuser/index';</script>";
             echo $str;
             exit;
         }else{

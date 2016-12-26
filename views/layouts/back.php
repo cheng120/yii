@@ -14,7 +14,7 @@ Yii::$app->session->open();
     <title>AdminLTE 2 | Starter</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <!-- Bootstrap 3.3.6 -->
+    <!-- /bootstrap 3.3.6 -->
     <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
@@ -74,7 +74,7 @@ Yii::$app->session->open();
                                     <a href="#">
                                         <div class="pull-left">
                                             <!-- User Image -->
-                                            <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                                            <img src="/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
                                         </div>
                                         <!-- Message title and timestamp -->
                                         <h4>
@@ -158,14 +158,14 @@ Yii::$app->session->open();
                     <!-- Menu Toggle Button -->
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <!-- The user image in the navbar-->
-                        <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
+                        <img src="/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
                         <!-- hidden-xs hides the username on small devices so only the image appears. -->
                         <span class="hidden-xs">Alexander Pierce</span>
                     </a>
                     <ul class="dropdown-menu">
                         <!-- The user image in the menu -->
                         <li class="user-header">
-                            <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                            <img src="/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
 
                             <p>
                                 Alexander Pierce - Web Developer
@@ -214,7 +214,7 @@ Yii::$app->session->open();
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel">
             <div class="pull-left image">
-                <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                <img src="/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
             </div>
             <div class="pull-left info">
                 <p>Alexander Pierce</p>
@@ -239,8 +239,8 @@ Yii::$app->session->open();
         <ul class="sidebar-menu">
             <li class="header">HEADER</li>
             <!-- Optionally, you can add icons to the links -->
-            <li class="active"><a href="#"><i class="fa fa-link"></i> <span>Link</span></a></li>
-            <li><a href="#"><i class="fa fa-link"></i> <span>Another Link</span></a></li>
+            <li class="active"><a href="/adminuser/userlist"><i class="fa fa-link"></i> <span>用户列表</span></a></li>
+            <li><a href="/adminuser/fateup"><i class="fa fa-link"></i> <span>上传图片</span></a></li>
             <li class="treeview">
                 <a href="#"><i class="fa fa-link"></i> <span>Multilevel</span>
             <span class="pull-right-container">
@@ -352,11 +352,11 @@ Yii::$app->session->open();
 <!-- REQUIRED JS SCRIPTS -->
 
 <!-- jQuery 2.2.3 -->
-<script src="plugins/jQuery/jquery-2.2.3.min.js"></script>
-<!-- Bootstrap 3.3.6 -->
-<script src="bootstrap/js/bootstrap.min.js"></script>
+<script src="/plugins/jQuery/jquery-2.2.3.min.js"></script>
+<!-- /bootstrap 3.3.6 -->
+<script src="/bootstrap/js/bootstrap.min.js"></script>
 <!-- AdminLTE App -->
-<script src="dist/js/app.min.js"></script>
+<script src="/dist/js/app.min.js"></script>
 </body>
 </html>
 <?php $this->endPage() ?>
