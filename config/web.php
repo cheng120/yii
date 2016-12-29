@@ -56,6 +56,7 @@ $config = [
         'debug' => 'yii\debug\Module',
     ],
     'params' => $params,
+
 ];
 
 if (YII_ENV_DEV) {

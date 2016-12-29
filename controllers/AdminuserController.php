@@ -9,6 +9,11 @@
 namespace app\controllers;
 
 
+
+use Upyun\Upyun;
+
+use Upyun\Config;
+
 class AdminuserController extends BackController
 {
 
@@ -36,11 +41,22 @@ class AdminuserController extends BackController
      */
     public function actionFateup()
     {
-        $url = "v2.api.upyun.com";
+
+
+        return $this->render("fateup");
+    }
+
+    /*
+     * ajax上传图片
+     */
+    public function actionAjaxuploadfile()
+    {
         $bucket = "lcazj";
         $operator = "cheng125";
         $password = md5("8888888a");
-        $expiration = 1478674618;
-        return $this->render("fateup");
+        $config = new Config($bucket,$operator,$password);
+        $up = new Upyun($config);
+        var_dump($_FILES);
+        exit;
     }
 }

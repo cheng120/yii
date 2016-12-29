@@ -66,4 +66,13 @@ return array (
       '@yii/faker' => $vendorDir . '/yiisoft/yii2-faker',
     ),
   ),
+  'yiisoft/upyun' =>
+      array (
+          'name' => 'upyun',
+          'version' => '1.0',
+          'alias' =>
+              array (
+                  '@Upyun' => $vendorDir . '/yiisoft/Upyun',
+              ),
+      ),
 );

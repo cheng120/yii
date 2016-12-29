@@ -1,9 +1,16 @@
+
+<?php
+use yii\captcha\Captcha;
+use yii\widgets\ActiveForm;
+use yii\helpers\Url;
+use yii\helpers\Html;
+?>
 <script src="http://cdn.bootcss.com/jquery/1.11.0/jquery.min.js" type="text/javascript"></script>
 <script>window.jQuery || document.write('<script src="js/jquery-1.11.0.min.js"><\/script>')</script>
-<script src="/js/fileinput.js"></script>
+
 
 <!--简体中文-->
-<script src="/js/locales/zh.js" type="text/javascript"></script>
+
 <div class="wrapper">
 
 
@@ -69,14 +76,23 @@
                         </div>
                     </div>
                     <div class="page-header">
-                        <h2>Bootstrap File Input Example</h2>
+                        <h2>上传fate图</h2>
                     </div>
-                    <form enctype="multipart/form-data">
-                        <input id="file-0a" class="file" type="file" multiple data-min-file-count="1">
-                        <br>
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                        <button type="reset" class="btn btn-default">Reset</button>
-                    </form>
+
+                    <script src="/js/fileinput.js"></script>
+                    <script src="/themes/fa/theme.js"></script>
+                    <script src="/js/locales/zh.js" ></script>
+                    <label class="control-label"></label>
+                    <input id="input-fa" name="inputfa[]" type="file" multiple class="file-loading">
+                    <script>
+                        $("#input-fa").fileinput({
+                            language: 'zh',
+                            theme: "fa",
+                            uploadUrl: "/file-upload-batch/2",
+                            uploadAsync: true, //设置上传同步异步 此为同步
+                            allowedFileExtensions: ['jpg','git','png'],
+                        });
+                    </script>
                     <hr>
                     <!-- /.box -->
 
@@ -104,9 +120,20 @@
 
 <!-- ./wrapper -->
 <script>
-    $('#file-zh').fileinput({
-        language: 'zh',
-        uploadUrl: '#',
-        allowedFileExtensions : ['jpg', 'png','gif'],
-    });
+
+   $(function(){
+//       $(document).on('ready', function() {
+//           $("#file").fileinput({
+//               browseLabel: 'Select Folder...'
+//           });
+//       });
+//       $('#file').fileinput({
+//           language: 'zh',
+//           uploadUrl: "upload", //上传后台操作的方法
+//           uploadAsync: true, //设置上传同步异步 此为同步
+//           maxFileSize: 200,
+//           allowedFileExtensions: ['jpg'] //限制上传文件后缀
+//       });
+   })
+
 </script>
