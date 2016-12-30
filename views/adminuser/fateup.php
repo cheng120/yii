@@ -88,7 +88,7 @@ use yii\helpers\Html;
                         $("#input-fa").fileinput({
                             language: 'zh',
                             theme: "fa",
-                            uploadUrl: "/file-upload-batch/2",
+                            uploadUrl: "<?php echo Url::to(['adminuser/ajaxuploadfile','type'=>'fate']);?>",
                             uploadAsync: true, //设置上传同步异步 此为同步
                             allowedFileExtensions: ['jpg','git','png'],
                         });
@@ -121,19 +121,6 @@ use yii\helpers\Html;
 <!-- ./wrapper -->
 <script>
 
-   $(function(){
-//       $(document).on('ready', function() {
-//           $("#file").fileinput({
-//               browseLabel: 'Select Folder...'
-//           });
-//       });
-//       $('#file').fileinput({
-//           language: 'zh',
-//           uploadUrl: "upload", //上传后台操作的方法
-//           uploadAsync: true, //设置上传同步异步 此为同步
-//           maxFileSize: 200,
-//           allowedFileExtensions: ['jpg'] //限制上传文件后缀
-//       });
-   })
+
 
 </script>

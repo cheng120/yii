@@ -55,8 +55,15 @@ class AdminuserController extends BackController
         $operator = "cheng125";
         $password = md5("8888888a");
         $config = new Config($bucket,$operator,$password);
-        $up = new Upyun($config);
-        var_dump($_FILES);
+        $type = $_REQUEST['type'];
+        $up = new Upyun($bucket,$operator,$password);
+        var_dump($_FILES['inputfa']);
+        if($type){
+            $path = "/".$type."/";
+        }
+        $res = $up->writeFile($path,$_FILES['inputfa']['tmp_name']);
+        var_dump($res);
+
         exit;
     }
 }
