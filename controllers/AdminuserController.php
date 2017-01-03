@@ -8,11 +8,9 @@
 
 namespace app\controllers;
 
+use UpYun;
 
 
-use Upyun\Upyun;
-
-use Upyun\Config;
 
 class AdminuserController extends BackController
 {
@@ -41,8 +39,11 @@ class AdminuserController extends BackController
      */
     public function actionFateup()
     {
-
-
+        $date = gmdate('D, d M Y H:i:s \G\M\T');
+        $bucket = "lcazj";
+        $operator = "cheng125";
+        $password = md5("8888888a");
+        $up = new Upyun($bucket,$operator,$password);
         return $this->render("fateup");
     }
 
@@ -54,16 +55,14 @@ class AdminuserController extends BackController
         $bucket = "lcazj";
         $operator = "cheng125";
         $password = md5("8888888a");
-        $config = new Config($bucket,$operator,$password);
         $type = $_REQUEST['type'];
         $up = new Upyun($bucket,$operator,$password);
-        var_dump($_FILES['inputfa']);
+        $file = fopen($_FILES['inputfa']['tmp_name'][0],'r');
         if($type){
-            $path = "/".$type."/";
+            $path = "/".$type."/".$_FILES['inputfa']['name'][0];
         }
-        $res = $up->writeFile($path,$_FILES['inputfa']['tmp_name']);
+        $res = $up->writeFile($path,$file);
         var_dump($res);
-
         exit;
     }
 }
