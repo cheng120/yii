@@ -43,7 +43,8 @@ class AdminuserController extends BackController
         $operator = "cheng125";
         $password = md5("8888888a");
         $up = new Upyun($bucket,$operator,$password);
-
+        $data = $up->readFile('/fate/');
+        var_dump($data);
         return $this->render("fateup");
     }
 
