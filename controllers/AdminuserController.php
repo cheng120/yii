@@ -39,11 +39,12 @@ class AdminuserController extends BackController
      */
     public function actionFateup()
     {
-        $date = gmdate('D, d M Y H:i:s \G\M\T');
         $bucket = "lcazj";
         $operator = "cheng125";
         $password = md5("8888888a");
         $up = new Upyun($bucket,$operator,$password);
+        $data = $up->readFile('/fate/');
+        var_dump($data);
         return $this->render("fateup");
     }
 
@@ -53,14 +54,15 @@ class AdminuserController extends BackController
     public function actionAjaxuploadfile()
     {
         $bucket = "lcazj";
-        $operator = "cheng125";
+        $operator = "cheng";
         $password = md5("8888888a");
         $type = $_REQUEST['type'];
         $up = new Upyun($bucket,$operator,$password);
         $file = fopen($_FILES['inputfa']['tmp_name'][0],'r');
         if($type){
-            $path = "/".$type."/".$_FILES['inputfa']['name'][0];
+            $path = "/".$bucket."/".$type."/".$_FILES['inputfa']['name'][0];
         }
+        echo $path;
         $res = $up->writeFile($path,$file);
         var_dump($res);
         exit;
