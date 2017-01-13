@@ -239,8 +239,8 @@ Yii::$app->session->open();
         <ul class="sidebar-menu">
             <li class="header">HEADER</li>
             <!-- Optionally, you can add icons to the links -->
-            <li class="active"><a href="/adminuser/userlist"><i class="fa fa-link"></i> <span>用户列表</span></a></li>
-            <li><a href="/adminuser/fateup"><i class="fa fa-link"></i> <span>上传图片</span></a></li>
+            <li <?php if(\Yii::$app->controller->id.'/'.\Yii::$app->controller->action->id == "adminuser/userlist"){ echo 'class="active"';} ?> > <a href="/adminuser/userlist"><i class="fa fa-link"></i> <span>用户列表</span></a></li>
+            <li <?php if(\Yii::$app->controller->id.'/'.\Yii::$app->controller->action->id == "adminuser/fateup"){ echo 'class="active"';} ?>><a href="/adminuser/fateup"><i class="fa fa-link"></i> <span>上传图片</span></a></li>
             <li class="treeview">
                 <a href="#"><i class="fa fa-link"></i> <span>Multilevel</span>
             <span class="pull-right-container">

@@ -52,6 +52,7 @@ class AdminloginController extends BackController
      */
     public function actionDoadminlogin()
     {
+        $redis = Yii::$app->redis;
         $admin_user = new Admin_user();
         $captchCode = $_POST['vcode'];
         if($captchCode == ''){
@@ -79,6 +80,7 @@ class AdminloginController extends BackController
         );
         $userRes = $admin_user->verAdminUser($data);
         if($userRes){
+            $this->session->set("admin",json_encode($userRes));
             $str = "<script>alert('登陆成功');location.href='/adminuser/index';</script>";
             echo $str;
             exit;
