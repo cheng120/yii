@@ -32,9 +32,9 @@ class FateController extends BaseController
             'servant'=>array('5'=>array(1,2),4=>array(3,3),3=>array(4,4)),
             'code' => array('5'=>array(1,2),4=>array(3,3),3=>array(4,4)),
         );
-        $this->getAwardOne($upArr);
+        $res = $this->getAwardOne($upArr);
         //奖池
-        $servant = '';
+        $servant = $res;
 
        return $this->render('card');
     }
@@ -46,7 +46,7 @@ class FateController extends BaseController
     {
 
         $chance = array(
-            "ssr"=> "0,1",
+            "ssr"=> "0,1    ",
             "sr"=> "6,8",
             "r" => "20,60",
             "wcssr"=>"2,5",
@@ -54,7 +54,6 @@ class FateController extends BaseController
             "wcr"=>"61,100",
         );
         $random = rand(1,100);
-        var_dump($random);
         foreach($chance as $key=>$value){
             $v = explode(',',$value);
             if($random >= $v[0] && $random<=$v[1]){
@@ -63,7 +62,7 @@ class FateController extends BaseController
             }
         }
         $res = $this->getCard($upArr,$gift);
-        var_dump($res);
+        return $res;
 
     }
 
