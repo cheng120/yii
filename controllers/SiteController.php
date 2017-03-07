@@ -5,6 +5,7 @@ namespace app\controllers;
 use yii;
 use app\models\User;
 use yii\helpers\Url;
+use linslin\yii2\curl;
 
 
 class SiteController extends BaseController
@@ -15,6 +16,7 @@ class SiteController extends BaseController
      */
     public function actionIndex()
     {
+        $curl = new curl\Curl();
         $res = User::find()->all();
         $redis = Yii::$app->redis;
         echo $redis->get('k1');

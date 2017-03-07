@@ -75,6 +75,7 @@ class FateController extends BaseController
         $fate_servant = new Fate_servant();
         $fate_mysticcode = new Fate_mysticcode();
         $where = array();
+
         switch ($type) {
             case 'wcssr':
                 $where['star'] = 5;
