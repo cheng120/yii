@@ -1,7 +1,7 @@
 <?php
 
 $params = require(__DIR__ . '/params.php');
-
+Yii::$classMap['ex'] = '@app/libs/ex.php';
 $config = [
     'id' => 'basic',
     'basePath' => dirname(__DIR__),

@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\lib\ex;
 use yii;
 use app\models\User;
 use yii\helpers\Url;
@@ -16,10 +17,12 @@ class SiteController extends BaseController
      */
     public function actionIndex()
     {
-        $curl = new curl\Curl();
-        $res = User::find()->all();
-        $redis = Yii::$app->redis;
-        echo $redis->get('k1');
+
+        $meepo = new \MeepoPs\APi\Telnet('0.0.0.0', '19910');
+        var_dump($meepo);
+
+//        $curl = new curl\Curl();
+//        $res = User::find()->all();
         return $this->render('index');
     }
 
