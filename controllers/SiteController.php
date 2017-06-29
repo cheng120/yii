@@ -18,8 +18,8 @@ class SiteController extends BaseController
     public function actionIndex()
     {
 
-        $meepo = new \MeepoPs\APi\Telnet('0.0.0.0', '19910');
-        var_dump($meepo);
+//        $meepo = new \MeepoPs\APi\Telnet('0.0.0.0', '19910');
+//        var_dump($meepo);exit;
 
 //        $curl = new curl\Curl();
 //        $res = User::find()->all();
